@@ -1,17 +1,43 @@
-// Online C compiler to run C program online
+//You are given an array arr of size n - 1 that contains distinct integers in the range from 1 to n (inclusive). 
+//This array represents a permutation of the integers from 1 to n with one element missing. 
+//Your task is to identify and return the missing element. 
+
 #include <stdio.h>
 
 int main() {
-    int arr[5]={1,2,3,5,6},j=0;
+    int n;
+    printf("Enter the array length:");
+    scanf("%d",&n);
+    int arr[n];
+    int temp;
     
-    for(int i=0;i<5;i++)
+    printf("Enter %d continues elements:",n);
+    
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(arr[i]<arr[j]){
+                temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+    
+   int j=arr[0];
+   printf(" Missing Elements is =");
+    for(int i=0;i<n;i++)
     {
-        j=j+1;
-         if(arr[i] != j)
+        if(arr[i] != j)
          {
             printf("%d\n",j);
             j++;
         }
+        j++;
     }
+    
     return 0;
 }
